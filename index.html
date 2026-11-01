@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="A no-equipment workout powered by a deck of cards.">
+  <title>DECK OF PAIN</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Deck of Pain home"><span>DECK</span> OF <b>PAIN</b></a>
+      <div class="top-actions"><span id="offline-status" class="status-dot">● ONLINE</span><button id="sound-toggle" class="icon-btn" aria-pressed="false" title="Toggle sound" aria-label="Toggle sound">♫</button></div>
+    </header>
+
+    <section id="setup-screen" class="screen setup-screen">
+      <div class="eyebrow">NO GEAR. NO EXCUSES.</div>
+      <h1>YOUR WORKOUT.<br><em>YOUR DECK.</em></h1>
+      <p class="lede">Every card is a command. Draw it. Own it. Move on.</p>
+
+      <div class="panel">
+        <div class="section-heading"><span>01 / GAME MODE</span><span class="muted">CHOOSE YOUR BATTLE</span></div>
+        <div class="mode-switch" role="group" aria-label="Game mode">
+          <button class="mode-btn active" data-mode="1" aria-pressed="true">1 PLAYER</button>
+          <button class="mode-btn" data-mode="2" aria-pressed="false">2 PLAYER / VERSUS</button>
+        </div>
+        <div class="section-heading suit-heading"><span>02 / ASSIGN YOUR SUITS</span><span class="muted">13 CARDS PER SUIT</span></div>
+        <div id="suit-selectors" class="suit-grid"></div>
+        <div class="section-heading"><span>QUICK PRESETS</span><span class="muted">ONE-TAP LOADOUT</span></div>
+        <div class="preset-row">
+          <button class="preset-btn" data-preset="full">FULL BODY</button>
+          <button class="preset-btn" data-preset="upper">UPPER BODY</button>
+          <button class="preset-btn" data-preset="legs">LEG BURNER</button>
+        </div>
+        <button id="start-btn" class="primary-btn">SHUFFLE &amp; START WORKOUT <span>→</span></button>
+      </div>
+      <div class="setup-foot"><span>52 CARDS</span><span>380 TOTAL REPS</span><span>ZERO EQUIPMENT</span></div>
+    </section>
+
+    <section id="game-screen" class="screen game-screen hidden">
+      <div class="game-toolbar">
+        <button id="back-setup" class="text-btn">← SETUP</button>
+        <div id="game-title" class="eyebrow">WORKOUT IN PROGRESS</div>
+        <button id="pause-all" class="text-btn">PAUSE</button>
+      </div>
+      <div id="players" class="players"></div>
+    </section>
+
+    <section id="summary-screen" class="screen summary-screen hidden">
+      <div class="eyebrow">DECK CLEARED</div>
+      <h1><em>WORK</em> COMPLETE.</h1>
+      <p class="lede">You showed up. You finished. That's the win.</p>
+      <div id="summary-content" class="summary-grid"></div>
+      <div class="summary-actions">
+        <button id="save-history" class="primary-btn">SAVE TO HISTORY</button>
+        <button id="restart-btn" class="secondary-btn">RESTART SAME SETUP</button>
+        <button id="new-setup" class="text-btn">BACK TO SETUP</button>
+      </div>
+      <div id="history-list" class="history-list"></div>
+    </section>
+
+    <footer class="app-footer">DECK OF PAIN <span>BUILT TO BE EARNED.</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="app-dialog" class="app-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <div class="dialog-panel">
+      <div class="dialog-kicker">DECK OF PAIN / SYSTEM MESSAGE</div>
+      <h2 id="dialog-title">LEAVE WORKOUT?</h2>
+      <p id="dialog-message">Your current progress will be lost.</p>
+      <div class="dialog-actions">
+        <button id="dialog-cancel" class="secondary-btn">KEEP WORKING</button>
+        <button id="dialog-confirm" class="danger-btn">YES, CONTINUE</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>
